@@ -1,5 +1,8 @@
+FILE(GLOB TEST_FILES *.cpp)
+FILE(GLOB SOURCE_FILES ../src/*.cpp)
+
 include_directories(${PROJECT_SOURCE_DIR}/src)
-add_executable(${PROJECT_NAME} testdefault.cpp test_rules.cpp test_board.cpp test_game.cpp ../src/rules.cpp ../src/board.cpp arduino.cpp)
+add_executable(${PROJECT_NAME} ${TEST_FILES} ${SOURCE_FILES})
 target_link_libraries(${PROJECT_NAME} gtest_main)
 
 include(GoogleTest)

@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "arduino.h"
+#include "Arduino.h"
 
 using namespace ::testing;
 

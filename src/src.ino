@@ -18,19 +18,39 @@ void setup() {
   // fill the screen with 'black'
   matrix.fillScreen(matrix.Color333(0, 0, 0));
 
-  setCell(3, 3, true);
-  setCell(4, 2, true);
-  setCell(4, 4, true);
+  randomBoard();
 
-  for(uint8_t c = 0; c < BOARD_WIDTH; c++) {
-      for(uint8_t r = 0; r < BOARD_HEIGHT; r++) {
-          if(getCell(c, r)) {
-              matrix.drawPixel(c, r, matrix.Color333(7, 7, 7));
-          }
-      }
-  }
-  
+  drawBoard();
 }
 
 void loop() {
+    delay(200);
+    calculateNextGeneration();
+    drawBoard();
+}
+
+void drawBoard() {
+    for(uint8_t column = 0; column < BOARD_WIDTH; column++) {
+      for(uint8_t row = 0; row < BOARD_HEIGHT; row++) {
+          if(getCell(column, row)) {
+              matrix.drawPixel(column, row, matrix.Color333(0, 4, 0));
+          }
+          else {
+              matrix.drawPixel(column, row, matrix.Color333(0, 0, 0));
+          }
+      }
+  }
+}
+
+void randomBoard() {
+    randomSeed(analogRead(8));
+
+    for(uint8_t column = 0; column < BOARD_WIDTH; column++) {
+      for(uint8_t row = 0; row < BOARD_HEIGHT; row++) {
+          long randomNumber = random(0, 100);
+          if (randomNumber > 50) {
+              setCell(column, row, true);
+          }
+      }
+  }
 }
