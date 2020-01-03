@@ -1,5 +1,5 @@
-#ifndef arduino_h
-#define arduino_h
+#ifndef _ARDUINO_H_
+#define _ARDUINO_H_
 
 typedef unsigned char uint8_t;
 

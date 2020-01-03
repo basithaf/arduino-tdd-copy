@@ -30,10 +30,12 @@ void loop() {
 }
 
 void drawBoard() {
+    uint16_t color = matrix.Color888(random(255), random(255), random(255));
+
     for(uint8_t column = 0; column < BOARD_WIDTH; column++) {
       for(uint8_t row = 0; row < BOARD_HEIGHT; row++) {
           if(getCell(column, row)) {
-              matrix.drawPixel(column, row, matrix.Color333(0, 4, 0));
+              matrix.drawPixel(column, row, color);
           }
           else {
               matrix.drawPixel(column, row, matrix.Color333(0, 0, 0));
